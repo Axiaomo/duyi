@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <ul></ul>
+  <script>
+    var oul = document.getElementsByTagName("ul")[0];
+    var ofag = document.createDocumentFragment();
+    for (var i = 0; i < 10000; i++) {
+      var oli = document.createElement("li");
+      oli.innerHTML = i;
+      ofag.appendChild(oli);
+    }
+    oul.appendChild(ofag)
+  </script>
+</body>
+
+</html>
