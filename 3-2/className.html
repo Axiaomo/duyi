@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="demo">username</label>
+    <input type="text" id="demo" />
+    <script>
+        var oInput = document.getElementById("demo");
+        var olabel = document.getElementsByTagName("label")[0];
+        oInput.className = "dg"
+        console.log(oInput.className)
+        // 自定义属性名
+        oInput.setAttribute("ds", "dg")
+        // 获取属性名
+        console.log(oInput.getAttribute("ds"))
+    </script>
+</body>
+
+</html>
