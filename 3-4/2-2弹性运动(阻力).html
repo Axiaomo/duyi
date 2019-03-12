@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: orange;
+            border-radius: 50%;
+        }
+
+        span {
+            position: absolute;
+            left: 300px;
+            top: 0px;
+            width: 1px;
+            height: 100px;
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        var oDiv = document.getElementsByTagName("div")[0];
+        var timer;
+        oDiv.onclick = function () {
+            startMove(this);
+        };
+
+        function startMove(obj) {
+            clearInterval(obj.timer);
+            var iSpeed = 20,
+                a, u = 0.9;
+            obj.timer = setInterval(function () {
+                a = (300 - obj.offsetLeft) / 8;
+                iSpeed = iSpeed + a;
+                iSpeed = iSpeed * u;
+                if (Math.abs(iSpeed) < 1 && Math.abs(300 - obj.offsetLeft) < 1) {
+                    console.log("over")
+                    clearInterval(obj.timer)
+                } else {
+                    obj.style.left = obj.offsetLeft + iSpeed + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
