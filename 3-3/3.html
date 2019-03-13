@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    div {
+      width: 50px;
+      height: 50px;
+      background: #f00;
+      position: absolute;
+      left: 500px;
+    }
+
+    #obtn {
+      margin-top: 50px
+    }
+
+    .border {
+      width: 1px;
+      height: 300px;
+      position: absolute;
+      left: 300px;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <button id="obtn">按钮</button>
+  <div class="border"></div>
+  <script>
+    var odiv = document.getElementsByTagName("div")[0];
+    var timer = null;
+    obtn.onclick = function () {
+      stareMove(odiv);
+    };
+
+    function stareMove(obj) {
+      clearInterval(timer)
+      var iSpped;
+      if (obj.offsetLeft > 300) {
+        iSpped = -7;
+      } else {
+        iSpped = 7
+      }
+      timer = setInterval(function () {
+        if (Math.abs(300 - obj.offsetLeft) < Math.abs(iSpped)) {
+          clearInterval(timer);
+          obj.style.left = "300px"
+        } else {
+          obj.style.left = obj.offsetLeft + iSpped + "px";
+        }
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>

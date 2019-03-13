@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background: #f00;
+      position: absolute;
+      left: 0;
+    }
+
+    #obtn {
+      margin-top: 200px
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <button id="obtn">按钮</button>
+  <script>
+    var odiv = document.getElementsByTagName("div")[0];
+    var timer = null;
+    obtn.onclick = function () {
+      stareMove(odiv);
+    };
+
+    function stareMove(obj) {
+
+      clearInterval(timer)
+      var iSpped = 10;
+      timer = setInterval(function () {
+        obj.style.left = obj.offsetLeft + iSpped + "px";
+        console.log(obj)
+      }, 30);
+
+    }
+  </script>
+</body>
+
+</html>
