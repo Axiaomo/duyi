@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    div {
+      width: 50px;
+      height: 50px;
+      background: orange;
+      position: absolute;
+    }
+
+    span {
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background: #000;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    var oDiv = document.getElementsByTagName("div")[0];
+    // 上一次div的值
+    var lastX = oDiv.offsetLeft;
+    var lastY = oDiv.offsetTop;
+    oDiv.onmousedown = function (e) {
+      clearInterval(this.timer)
+      var event = e || window.event;
+      var disX = e.clientX - this.offsetLeft;
+      var disY = e.clientY - this.offsetTop;
+      var that = this;
+      // 初始速度
+      var iSpeedX = 0,
+        iSpeedY = 0;
+      document.onmousemove = function (e) {
+        var newLeft = e.clientX - disX;
+        var newTop = e.clientY - disY;
+        // 两点之间的距离
+        iSpeedX = newLeft - lastX;
+        iSpeedY = newTop - lastY;
+        // 更新上一次的值
+        lastX = newLeft;
+        lastY = newTop;
+        that.style.left = newLeft + "px";
+        that.style.top = newTop + "px";
+      };
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+        startMove(that, iSpeedX, iSpeedY)
+      };
+    };
+
+    function startMove(obj, iSpeedX, iSpeedY) {
+      clearInterval(obj.timer);
+      // 加速度
+      var g = 2;
+      obj.timer = setInterval(function () {
+        iSpeedY += g;
+        var newLeft = obj.offsetLeft + iSpeedX;
+        var newTop = obj.offsetTop + iSpeedY;
+        if (
+          newTop >=
+          document.documentElement.clientHeight - obj.offsetHeight
+        ) {
+          iSpeedY *= -1;
+          // 摩擦力
+          iSpeedY *= 0.8;
+          iSpeedX *= 0.8;
+          newTop = document.documentElement.clientHeight - obj.offsetHeight;
+        }
+        if (newTop <= 0) {
+          iSpeedY *= -1; // 摩擦力 
+          iSpeedY *= 0.8;
+          iSpeedX *= 0.8;
+          newTop = 0;
+        }
+        if (newLeft >=
+          document.documentElement.clientWidth - obj.offsetWidth
+        ) {
+          iSpeedX *= -1;
+          // 摩擦力
+          iSpeedY *= 0.8;
+          iSpeedX *= 0.8;
+          newLeft = document.documentElement.clientWidth - obj.offsetWidth;
+        }
+        if (newLeft <= 0) {
+          iSpeedX *= -1; // 摩擦力 
+          iSpeedY *= 0.8;
+          iSpeedX *= 0.8;
+          newLeft = 0;
+        }
+        // 判断停止
+        if (Math.abs(iSpeedX) < 1) {
+          iSpeedX = 0;
+        }
+        if (Math.abs(iSpeedY) < 1) {
+          iSpeedY = 0;
+        }
+        if (iSpeedY == 0 && iSpeedX == 0 && newTop == document.documentElement.clientHeight - obj.offsetHeight) {
+          clearInterval(obj.timer)
+          console.log("over")
+        }
+        obj.style.left = newLeft + "px";
+        obj.style.top = newTop + "px";
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>
