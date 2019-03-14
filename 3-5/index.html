@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .wrapper {
+            margin: 100px auto 0;
+            width: 400px;
+            height: 240px;
+            border: 1px solid #000;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sliderPage {
+            height: 240px;
+            width: 2000px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .sliderPage li {
+            width: 400px;
+            height: 240px;
+            float: left;
+        }
+
+        .sliderPage li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrapper .btn {
+            width: 40px;
+            height: 40px;
+            color: #fff;
+            background: #000;
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.1;
+            cursor: pointer;
+        }
+
+        .wrapper:hover .btn {
+            opacity: 0.7;
+        }
+
+        .wrapper .leftBtn {
+            left: 15px;
+        }
+
+        .wrapper .rightBtn {
+            right: 15px;
+        }
+
+        .sliderIndex {
+            position: absolute;
+            width: 100%;
+            bottom: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .sliderIndex span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        span.active {
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul class="sliderPage">
+            <li>
+                <img src="./img/1.jpg" alt="" srcset="">
+            </li>
+            <li> <img src="./img/2.jpg" alt="" srcset=""></li>
+            <li> <img src="./img/3.jpg" alt="" srcset=""></li>
+            <li> <img src="./img/4.jpg" alt="" srcset=""></li>
+            <li> <img src="./img/1.jpg" alt="" srcset=""></li>
+        </ul>
+        <div class="btn leftBtn">&lt;</div>
+        <div class="btn rightBtn">&gt;</div>
+        <div class="sliderIndex">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <script>
+        var timer = null;
+        var sliderPage = document.getElementsByClassName("sliderPage")[0];
+        var moveWidth = sliderPage.children[0].offsetWidth;
+        var num = sliderPage.children.length - 1;
+
+        function autoMove(direction) {
+            if (!direction || direction == "left->right") {
+
+            }
+        }
+        timer = setInterval(autoMove, 1500)
+    </script>
+</body>
+
+</html>

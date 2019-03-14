@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var personArr = [{
+            "name": "admin1",
+            "password": 123,
+            "sex": "m"
+        }, {
+            "name": "admin2",
+            "password": 1234,
+            "sex": "f"
+        }, {
+            "name": "admin3",
+            "password": 1235,
+            "sex": "m"
+        }, {
+            "name": "admin4",
+            "password": 1236,
+            "sex": "m"
+        }]
+        // 源码
+        Array.prototype.myFilter = function (func) {
+            var arr = []
+            for (var i = 0; i < this.length; i++) {
+                if (func(this[i], i)) {
+                    arr.push(this[i])
+                }
+            }
+            return arr;
+        };
+        // Filter
+        var newArr = personArr.myFilter(function (ele, index) {
+            // if (ele.sex == 'f') {
+            //     return true
+            // } else {
+            //     return false
+            // }
+            if (index % 2 == 0) {
+                return true
+            } else {
+                return false
+            }
+            // return true
+            // return null //false
+        });
+        console.log(newArr)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var personArr = [{
+                name: "admin1",
+                password: 123,
+                sex: "m"
+            },
+            {
+                name: "admin2",
+                password: 1234,
+                sex: "f"
+            },
+            {
+                name: "admin3",
+                password: 1235,
+                sex: "m"
+            },
+            {
+                name: "admin4",
+                password: 1236,
+                sex: "m"
+            }
+        ];
+        var newArr = personArr.map(function (ele, index) {
+            if (ele.sex == "m") {
+                ele.gF = true;
+                return ele
+            } else {
+                ele.bF = true;
+                return ele;
+            }
+        });
+        console.log(newArr)
+    </script>
+</body>
+
+</html>
