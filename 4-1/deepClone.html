@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function deepClone(target, option) {
+        var prop, src, copy;
+        if (option != null) {
+          for (prop in option) {
+            src = target[prop];
+            copy = option[prop];
+            if (copy && typeof copy == "object") {
+              // 判断是否为数组
+              if (Object.prototype.toString.call(copy) == "[object Array]") {
+                src = [];
+              } else {
+                src = {};
+              }
+              target[prop] = deepClone(src, copy);
+            } else {
+              // 原始值
+              target[prop] = copy;
+            }
+          }
+        }
+        return target;
+      }
+
+      var obj1 = {};
+      var obj2 = {
+        name: "aimee",
+        hobby: {
+          sing: "good",
+          dance: "well"
+        }
+      };
+      deepClone(obj1, obj2);
+      obj2.name = "cg";
+      console.log(obj1);
+    </script>
+  </body>
+</html>
